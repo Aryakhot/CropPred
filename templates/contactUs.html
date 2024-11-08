@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Connect - Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url("{{ url_for('static', filename='images/c1.avif') }}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Curvy Navigation Bar */
+        nav {
+            background: linear-gradient(to right, #4CAF50, #81C784);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        #home, #contact, #login, #logout {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #FFEB3B; /* A bright color on hover */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        nav:before {
+            content: '';
+            position: absolute;
+            top: -50px; /* Adjust for the curve height */
+            left: 0;
+            right: 0;
+            height: 100px; /* Height of the curve */
+            background: #28a745; /* Same color as nav background */
+            border-radius: 50%; /* Creates a curve */
+            z-index: 0; /* Place behind the content */
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: relative; /* Position for stacking context */
+            z-index: 1; /* Place on top of the curve */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo img {
+            width: 50px; /* Adjust logo size */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        /* Contact Us Form Styling */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            width: 400px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        
+        #home {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    padding-left: 650px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+#contact {color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+
+}
+
+#login {color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+
+
+}
+
+#logout {color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Agro Connect Logo"> <!-- Logo Image -->
+                AGRO-CONNECT
+            </div>
+            <div>
+                <a id='home' href="/">Home</a>
+                <a id='contact' href="/contactUs">Contact Us</a>
+                <a id='login' href="/login">Login</a>
+                {% if session['user_id'] %}
+                    <a id="logout" href="/logout">Logout</a>
+                {% else %}
+                    <a id="login" href="/login">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="form-container">
+            <h2>Contact Us</h2><form id="contactForm" action="/submitContact" method="POST" onsubmit="return showSuccessMessage()"><form action="/submitContact" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google Translate -->
+    <div class="gtranslate_wrapper"></div>
+
+    <script>
+        // Prevent the default form submission and handle it using AJAX
+        document.getElementById("contactForm").onsubmit = function(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+
+            var form = event.target;
+            var formData = new FormData(form);
+
+            // Use AJAX to send the form data
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    showSuccessMessage();  // Show the success message
+                } else {
+                    alert("There was an error submitting the form. Please try again.");
+                }
+            };
+            xhr.send(formData);
+        };
+
+        function showSuccessMessage() {
+            alert("Your message has been successfully sent!");
+            // Optionally, reset the form
+            document.getElementById("contactForm").reset();
+        }
+    </script>
+
+    <script>
+        window.gtranslateSettings = {
+            default_language: "en",
+            detect_browser_language: true,
+            wrapper_selector: ".gtranslate_wrapper",
+        };
+    </script>
+
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+</body>
+</html>

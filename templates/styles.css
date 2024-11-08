@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+.top-left-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-left-logo img {
+    width: 100px; /* Adjust size as needed */
+    margin: 10px;
+    margin-top:0px;
+}
+
+.top-left-logo span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.background {
+    background-image: url('/Users/apple/Desktop/mini project/templates/c1.avif'); /* Replace 'background.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #45a049;
+}
+
+.create-account {
+    margin-top: 15px;
+    color: #555;
+}
+
+.create-account a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
