@@ -91,20 +91,33 @@ body, html {
 .button-group button:hover {
     background-color: #45a049;
 }
+nav {
+            width: 1500px;
+  position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0;
+            height: 100px;
 
+        }
+      
+        nav a {
+            text-decoration: none;
+            color: #fffffff6; /* Match link color with button */
+            font-size: 20px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    
-    <nav>
-        <a href="/">Home</a>
-    </nav>
 
 
     <div class="container">
         <!-- Left side with image -->
         <div class="image-section">
-            <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Create Account Image"> <!-- Replace with your image path -->
+            <img src="{{ url_for('static', filename='images/premium_photo-1661757549432-446331f0fd6c.avif') }}" alt="Create Account Image"> <!-- Replace with your image path -->
         </div>
 
 

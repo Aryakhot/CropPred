@@ -26,54 +26,6 @@ body {
             background-position: center;
         }
 
-        /* Curvy Navigation Bar */
-        nav {
-            background: linear-gradient(to right, #4CAF50, #81C784);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
-            border-radius: 0 0 50% 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        #home, #contact, #login, #logout {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            transition: color 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            color: #FFEB3B; /* A bright color on hover */
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
-        nav:before {
-            content: '';
-            position: absolute;
-            top: -50px; /* Adjust for the curve height */
-            left: 0;
-            right: 0;
-            height: 100px; /* Height of the curve */
-            background: #28a745; /* Same color as nav background */
-            border-radius: 50%; /* Creates a curve */
-            z-index: 0; /* Place behind the content */
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            position: relative; /* Position for stacking context */
-            z-index: 1; /* Place on top of the curve */
-        }
-
         .logo {
             display: flex;
             align-items: center;
@@ -81,11 +33,18 @@ body {
             font-weight: bold;
             color: white;
         }
-
         .logo img {
             width: 50px; /* Adjust logo size */
             height: auto;
             margin-right: 10px;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         /* Contact Us Form Styling */
@@ -268,17 +227,7 @@ body {
                     <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Agro Connect Logo"> <!-- Logo Image -->
                     AGRO-CONNECT
                 </div>
-                <div>
-                    <a id='home' href="/">Home</a>
-                    <a id='contact' href="/contactUs">Contact Us</a>
-                    <a id='login' href="/login">Login</a>
-                    {% if session['user_id'] %}
-                        <a id="logout" href="/logout">Logout</a>
-                    {% else %}
-                        <a id="login" href="/login">Login</a>
-                    {% endif %}
-                </div>
-            </div>
+                
         </nav>
 
     <div class="background">

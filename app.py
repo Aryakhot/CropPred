@@ -53,8 +53,8 @@ with app.app_context():
 def home():
     # Check if the user is logged in
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # Redirect to login if not logged in
-    return render_template('home.html')  # Show the homepage if logged in
+        return redirect(url_for('login'))  # Redirect to login page if not logged in
+    return render_template('home.html') 
 
 @app.route('/registration_form', methods=['GET', 'POST'])
 def register():
